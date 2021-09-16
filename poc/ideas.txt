@@ -1,0 +1,10 @@
+Implement safemath to it
+
+Make an AMM hard coded for one ERC20 token to another ERC20 token
+
+Next up make it so that different users can add to the liquidity pool
+
+Add a protocol fee, which is accessible to the owner
+	Will need to add ownable.sol to it to be able to do that
+
+
