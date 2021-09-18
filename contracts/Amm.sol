@@ -19,12 +19,15 @@ contract Amm {
 	}
 
 	function quoteT1_to_T2(uint256 t1InputAmt) public view returns(uint256) {
+		/*
 		uint256 newT1Amt = token1Amt.add(t1InputAmt);
 		uint256 dividedNewT1Amt = constantProduct.div(newT1Amt);
 		uint256 returnValue = dividedNewT1Amt.sub(token1Amt);
 		return returnValue;
 
 		//return token1Amt.sub(constantProduct.div(token1Amt.add(t1InputAmt)));
+		*/
+      		return token2Amt - (constantProduct / (token1Amt + t1InputAmt));	       
 	}
 
 	function quoteT2_to_T1(uint256 t2InputAmt) public view returns(uint256) {
