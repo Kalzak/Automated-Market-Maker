@@ -48,17 +48,13 @@ contract Amm {
 	}
 	
 	function exchangeT1_to_T2(uint256 t1InputAmt) public {
-		uint256 token1Amt = IERC20(token1).balanceOf(address(this));
-		uint256 token2Amt = IERC20(token2).balanceOf(address(this));
-		uint256 outputAmount = token2Amt.sub(constantProduct.div(token1Amt.add(t1InputAmt)));
+		uint256 outputAmount = quoteT1_to_T2(t1InputAmt);
 		IERC20(token1).transferFrom(msg.sender, address(this), t1InputAmt);
 		IERC20(token2).transfer(msg.sender, outputAmount);
 	}
 
 	function exchangeT2_to_T1(uint256 t2InputAmt) public {
-		uint256 token1Amt = IERC20(token1).balanceOf(address(this));
-		uint256 token2Amt = IERC20(token2).balanceOf(address(this));
-		uint256 outputAmount = token1Amt.sub(constantProduct.div(token2Amt.add(t2InputAmt)));
+		uint256 outputAmount = quoteT2_to_T1(t2InputAmt);
 		IERC20(token2).transferFrom(msg.sender, address(this), t2InputAmt);
 		IERC20(token1).transfer(msg.sender, outputAmount);
 	}
